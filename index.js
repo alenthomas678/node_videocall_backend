@@ -1,6 +1,8 @@
 const app = require('express')()
 const http = require('http').createServer(app)
 
+const rooms = {};
+const socketToRoom = {};
 
 app.get('/', (req, res) => {
     res.send("Node Server is running. Yay!!")
