@@ -5,7 +5,7 @@ const rooms = {};
 const socketToRoom = {};
 
 app.get('/', (req, res) => {
-    res.send("Node Server is running. Yay!!")
+    res.send("My WebRTC Server -- ATN")
 })
 
 const socketio = require('socket.io')(http)
@@ -55,7 +55,9 @@ socketio.on("connection", (socket) => {
         if (otherUser) {
             socket.to(otherUser).emit("offer", {
                 sdp: data["sdp"],
-                socketID: data["local"]
+                socketID: data["local"],
+                name: data["name"],
+                pro_img: data["pro_img"],
             });
         }
     });
@@ -65,7 +67,9 @@ socketio.on("connection", (socket) => {
         if (otherUser) {
             socket.to(otherUser).emit("answer", {
                 sdp: data["sdp"],
-                socketID: data["local"]
+                socketID: data["local"],
+                name: data["name"],
+                pro_img: data["pro_img"],
             });
         }
     });
